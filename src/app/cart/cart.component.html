@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          <h5 class="card-title">Listado de compras</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let shop of (shopList$ | async)">
+            <div class="d-flex  align-items-center">
+                <img width="40" [src]="shop.image" [alt]="shop.title"> 
+                <span class="m-2">{{shop.title}} - {{shop.artist}} x {{shop.quantity}}</span>
+            </div> 
+        </li>
+        <span class="text-center"><span class="icon-shop"></span> Total: {{getTotal() | currency}}</span>
+        </ul>
+        
+      </div>
+</div>

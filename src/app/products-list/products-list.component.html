@@ -1,0 +1,15 @@
+<div class="row row-cols-1 row-cols-md-1 g-0 mt-5">
+    <div class="card m-2" *ngFor="let product of products">
+        <img class="card-img-top" [src]="product.image" [alt]="product.title">
+        <div class="card-body">
+            <h5 class="card-title">{{product.title}} - {{product.artist}}</h5>
+            <p class="card-text">{{product.description}}</p>
+            <p class="card-text">{{product.price | currency}}</p>
+            <span class="badge text-bg-warning" *ngIf="product.stock == 0">Sin Stock</span>
+            <div class="d-flex justify-content-center" *ngIf="product.stock">
+                <app-input-integer class="m-2" [(quantity)]="product.quantity" [max]="product.stock" *ngIf="product.stock"></app-input-integer>
+                <button class="btn btn-success m-2" (click)="addToCart(product)">comprar</button>
+            </div>
+        </div>
+    </div>
+</div>

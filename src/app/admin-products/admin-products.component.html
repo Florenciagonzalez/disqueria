@@ -1,0 +1,62 @@
+<div class="row mt-5">
+    <div class="col-9">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Portada</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Artista</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Stock</th>
+            <th scope="col"></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td> <img width="65" [src]="product.image" [alt]="product.title"></td>
+            <td>{{product.title}}</td>
+            <td>{{product.artist}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price | currency}}</td>
+            <td>{{product.stock}}</td>
+            <td><button class="btn btn-danger" (click)="delete(product)">eliminar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    <div class="col-3">
+      <h4>Añadir un nuevo producto</h4>
+      <form [formGroup]="productForm" (ngSubmit)="addProduct()">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Titulo</span>
+          <input type="text" class="form-control" formControlName="title">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Artista</span>
+          <input type="text" class="form-control" formControlName="artist">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Descripción</span>
+          <input type="text" class="form-control" formControlName="description">
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Precio</span>
+          <input type="number" class="form-control" formControlName="price">
+        </div>
+         <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1">Link de portada</span>
+          <input type="text" class="form-control" formControlName="image">
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text" id="basic-addon1">Stock</span>
+          <input type="number" class="form-control" formControlName="stock">
+        </div>
+
+        <button class="btn btn-success mb-5">Añadir</button>
+    </form>
+    </div>
+</div>
+
